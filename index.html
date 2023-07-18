@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            body{
+        background-color: #000000;
+    background-image: 
+        radial-gradient(at 47% 33%, hsl(272, 100%, 51%) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(310, 100%, 61%) 0, transparent 55%),
+        radial-gradient(at 22% 55%, hsl(191, 100%, 49%) 0, transparent 55%);
+        height: 100vh;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.music-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.553);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.674);
+
+}
+
+.cover img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+}
+.spin{
+    animation: spin 6s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+    color: #333;
+}
+
+.artist {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+}
+
+.play-button,
+.skip-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+}
+
+.play-icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid #333;
+  transition: transform 0.3s;
+  
+}
+
+.play-button:hover,
+.skip-button:hover {
+  transform: scale(1.1);
+}
+
+.play-button.playing .play-icon {
+  transform: translateX(-2px);
+}
+
+.skip-button {
+    color:#333;
+}
+
+.skip-button:hover {
+  color: #4285F4;
+}
+
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Glass Morphism Music Player</title>
+      <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+      <div class="container">
+        <div class="music-player">
+          <div class="cover">
+            <img src="n.jpg" id="image" class="image" alt="Album Cover">
+          </div>
+          <div class="info">
+            <h2 class="title">Song Title</h2>
+            <p class="artist">Artist Name</p>
+          </div>
+          <div class="controls">
+            <button class="play-button" onclick="togglePlay()">
+              <span class="play-icon"></span>
+            </button>
+            <button class="skip-button" onclick="nextSong()">Skip</button>
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>
+    
+      <script>
+let isPlaying = false;
+
+function togglePlay() {
+  const playButton = document.querySelector('.play-button');
+  const playIcon = document.querySelector('.play-icon');
+    const image=document.getElementById('image')
+  isPlaying = !isPlaying;
+
+  if (isPlaying) {
+    playButton.classList.add('playing');
+    playIcon.style.width = '15px';
+    playIcon.style.borderLeftColor = '#4285F4';
+    image.classList.add('spin');
+  } else {
+    playButton.classList.remove('playing');
+    image.classList.remove('spin');
+    playIcon.style.width = '0';
+    playIcon.style.borderLeftColor = '#333';
+  }
+}
+
+function nextSong() {
+  // Logic for playing the next song
+}
+
+
+      </script>
+</body>
+</html>
